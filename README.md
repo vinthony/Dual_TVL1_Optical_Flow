@@ -2,9 +2,11 @@
 
 the matlab version of dual TV-l1 optical flow
 
+the detail of algorithm in paper of reference[1]. 
+
 # Reference
 
-[1] Zach C, Pock T, Bischof H. A duality based approach for realtime TV-L 1 optical flow[C]//Joint Pattern Recognition Symposium. Springer Berlin Heidelberg, 2007: 214-223.
+[1] Zach C, Pock T, Bischof H. A duality based approach for realtime TV-L1 optical flow[C]//Joint Pattern Recognition Symposium. Springer Berlin Heidelberg, 2007: 214-223.
 
 [2] Javier Sanchez, Enric Meinhardt-Llopis and Gabriele Facciolo. “TV-L1 Optical Flow Estimation”.
 
@@ -18,4 +20,5 @@ the matlab version of dual TV-l1 optical flow
 ![after](https://cloud.githubusercontent.com/assets/4397546/22922752/f46c21fa-f2d9-11e6-9d4a-8dfd265cfcd3.jpg)
 
 # optical flow
-![outputflow](https://cloud.githubusercontent.com/assets/4397546/22922764/fdcd1d9e-f2d9-11e6-8c34-0a84f264a3fd.jpg)
+![untitled](https://cloud.githubusercontent.com/assets/4397546/22923082/070c74a8-f2db-11e6-93c6-454fa925d8ea.jpg)
+
