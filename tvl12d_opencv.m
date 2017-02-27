@@ -27,26 +27,20 @@ for gp = levels
     p11 = imresize(pli,size(I0)/gp,'bilinear');
     p12 = p11; p21 = p11; p22 = p11;
     
+    [I1x,I1y] = gradient(wI1); %center gradient of vol2f
+    
     [ um,vm ] = resizeFlow( um,vm,size(I0)./gp );
    
     for warped = 1:10 %current warping.
         D=zeros(M,N,2);
         D(:,:,1) = um; D(:,:,2) = vm;
         Iw1 = imwarp(wI1,D); % the effect of bound.
-            
-        % here you could insert any pair-wise metric
-        %[R] = cencus_cost(Iw1,wI0);
-        %eg:SAD:
-         residual = sqrt((Iw1-wI0).^2+1e-10);
-         dd = (Iw1-wI0)./sqrt((Iw1-wI0).^2+1e-10);
-         [g1x,g1y] = gradient(Iw1);
-         Iw1x = g1x .*dd;
-         Iw1y = g1y .*dd;
-        % or : SSD
-        % residual = 0.5*(Iw1-wI0).^2;
-        % dd = (Iw1 - wI0);
+        
+        Iw1x = imwarp(I1x,D);
+        Iw1y = imwarp(I1y,D);
+ %       [P,Iw1x,Iw1y] = sum_of_difference(Iw1,wI0);
         grad = Iw1x.*Iw1x+Iw1y.*Iw1y;
-        rho_c = (residual - Iw1x.*um-Iw1y.*vm);
+        rho_c = (Iw1 - Iw1x.*um-Iw1y.*vm-wI0);
         [um,vm,p11,p12,p21,p22] = tvl1_optimization(um,vm,grad,rho_c,Iw1x,Iw1y,p11,p12,p21,p22);    
     end
     
